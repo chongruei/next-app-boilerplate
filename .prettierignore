@@ -1,0 +1,16 @@
+# Add files here to ignore them from prettier formatting
+
+/.next
+/node_modules
+/out
+/dist
+/coverage
+/mobkServiceWorker.js
+cypress.config.ts
+README.md
+sw.js
+*sw.js.map*
+*workbox-*
+
+*.yml
+.dockerignore

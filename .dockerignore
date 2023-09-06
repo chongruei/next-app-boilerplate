@@ -1,0 +1,27 @@
+Dockerfile.dev
+Dockerfile.local
+Dockerfile.stage
+
+.dockerignore
+node_modules
+
+npm - debug.log
+README.md
+
+cypress
+cypress.config.ts
+
+.yml
+.out
+.next
+.git
+.husky
+.eslintrc
+.prettier.config.js
+.prettierignore
+.commitlint.config.js
+.nextjs-app-router-boilerplate.code-workspace
+
+e2e
+test-results
+playwright.config.ts

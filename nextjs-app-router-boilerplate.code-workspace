@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "name": "nextjs-app-router-boilerplate",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["react", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "javascript.format.insertSpaceAfterConstructor": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "gitlens.gitCommands.skipConfirmations": ["fetch:command", "switch:command"],
+    "git.confirmSync": false,
+    "tailwindCSS.validate": false,
+    "workbench.editor.showTabs": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "git.ignoreRebaseWarning": true
+  }
+}

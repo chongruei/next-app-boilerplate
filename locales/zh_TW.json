@@ -1,0 +1,58 @@
+{
+  "IndexPage": {
+    "title": "Next.js app router 模板",
+    "description": "這是一個基本範例，演示了如何在 Next.js App Router 中使用 <code>next-intl</code>。嘗試在右上角更改語言環境，觀察內容的變化。"
+  },
+  "AboutPage": {
+    "title": "關於",
+    "description": "<p>路由也可以國際化。</p><p>如果您使用預設的英文語言，那麼在此頁面中瀏覽器地址欄上會顯示 <code>/about</code>。</p>"
+  },
+  "ConfigPage": {
+    "title": "環境變數",
+    "description": "請於 {envName} 檔案設定您的環境變數"
+  },
+  "QueryPage": {
+    "title": "React Query",
+    "description": "這是一個 React Query 範例"
+  },
+  "Error": {
+    "title": "發生了錯誤！",
+    "description": "<p>很抱歉，我們遇到了一個錯誤。</p><p>您可以嘗試 <retry>重新載入</retry> 您正在訪問的頁面。</p>"
+  },
+  "NotFoundPage": {
+    "title": "頁面未找到",
+    "description": "請仔細檢查瀏覽器地址欄或使用導航前往已知頁面。"
+  },
+  "LocaleLayout": {
+    "title": "Next.js app router 模板",
+    "description": "這是一個基本範例，演示了如何在 Next.js App Router 中使用 next-intl"
+  },
+  "LocaleSwitcher": {
+    "label": "切換語言",
+    "locale": {
+      "en": "英文",
+      "zh-CN": "簡體中文",
+      "zh-TW": "繁體中文"
+    }
+  },
+  "Navigation": {
+    "home": "首頁",
+    "about": "關於",
+    "config": "環境變數",
+    "query": "查詢"
+  },
+  "PageLayout": {
+    "links": {
+      "docs": {
+        "title": "文件",
+        "description": "在官方文件中了解有關 next-intl 的更多資訊。",
+        "href": "https://next-intl-docs.vercel.app/"
+      },
+      "source": {
+        "title": "源代碼",
+        "description": "在 GitHub 上瀏覽此範例的源代碼。",
+        "href": "https://github.com/amannn/next-intl/tree/main/examples/example-next-13"
+      }
+    }
+  }
+}

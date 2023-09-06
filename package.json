@@ -1,0 +1,51 @@
+{
+  "name": "nextjs-app-router-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "18.17.1"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "react-env --env APP_ENV --  next build",
+    "start": "react-env --env APP_ENV --  next start",
+    "format": "prettier --cache --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./prettier.config.js",
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.33.0",
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "axios": "^1.5.0",
+    "next": "13.4.11",
+    "next-intl": "2.20.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2",
+    "valtio": "^1.11.2"
+  },
+  "devDependencies": {
+    "@beam-australia/react-env": "^3.1.1",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@next/bundle-analyzer": "13.4.11",
+    "@playwright/test": "^1.37.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "autoprefixer": "10.4.15",
+    "clsx": "^2.0.0",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.11",
+    "husky": "^8.0.0",
+    "postcss": "8.4.28",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.3"
+  }
+}

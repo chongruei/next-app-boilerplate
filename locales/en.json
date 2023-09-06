@@ -1,0 +1,58 @@
+{
+  "IndexPage": {
+    "title": "Next.js app router boilerplate",
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes."
+  },
+  "AboutPage": {
+    "title": "About",
+    "description": "<p>The routing is internationalized too.</p><p>If you're using the default language English, you'll see <code>/about</code> in the browser address bar on this page.</p><p>If you change the locale to Chinese, the URL is prefixed with the locale (<code>/zh-TW/about</code>).</p>"
+  },
+  "ConfigPage": {
+    "title": "Environment variables",
+    "description": "Please set your environment variables in {envName} file"
+  },
+  "QueryPage": {
+    "title": "React Query",
+    "description": "This is a React Query example"
+  },
+  "Error": {
+    "title": "Something went wrong!",
+    "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "Please double-check the browser address bar or use the navigation to go to a known page."
+  },
+  "LocaleLayout": {
+    "title": "Next.js app router boilerplate",
+    "description": "This is a basic example that demonstrates the usage of next-intl with the Next.js App Router"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": {
+      "en": "English",
+      "zh-CN": "Chinese (Simplified)",
+      "zh-TW": "Chinese (Traditional)"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "config": "Config",
+    "query": "Query"
+  },
+  "PageLayout": {
+    "links": {
+      "docs": {
+        "title": "Docs",
+        "description": "Learn more about next-intl in the official docs.",
+        "href": "https://next-intl-docs.vercel.app/"
+      },
+      "source": {
+        "title": "Source code",
+        "description": "Browse the source code of this example on GitHub.",
+        "href": "https://github.com/amannn/next-intl/tree/main/examples/example-next-13"
+      }
+    }
+  }
+}
