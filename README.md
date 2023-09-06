@@ -158,7 +158,6 @@ To create a new page, follow this structure:
 
 For internationalization (i18n), we use the `next-intl` package. It provides comprehensive support for localization in Next.js applications.
 
-
 ### Tailwind CSS
 
 We use Tailwind CSS for styling. Here are some useful features:
@@ -166,6 +165,14 @@ We use Tailwind CSS for styling. Here are some useful features:
 - [Responsive design](https://tailwindcss.com/docs/responsive-design): Use breakpoint prefixes such as `mobile`, `tablet`, and `desktop` to apply styles based on different screen sizes.
 - [Arbitrary values](https://tailwindcss.com/docs/adding-custom-styles): Customize your classes with arbitrary values.
 - [Changing opacity](https://tailwindcss.com/docs/ring-color#changing-the-opacity): Adjust the opacity of elements.
+
+### React Query
+
+A powerful library for managing remote data fetching and synchronization of data between components. It provides a concise and declarative API to handle data fetching, caching, and background updates. This makes working with APIs and handling data in your Next.js application a lot more efficient and straightforward.
+
+### Valtio 
+
+For state management, they have included Valtio, a lightweight and minimalist state management library for React. With Valtio, managing and sharing state throughout your application becomes a breeze. It simplifies complex state management and reduces boilerplate code.
 
 ### SEO
 
