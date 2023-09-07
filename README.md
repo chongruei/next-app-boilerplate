@@ -15,7 +15,6 @@ Welcome to our all-in-one Next.js project with app router!
 - 🚫 Lint-staged for running linters on Git staged files
 - 🚓 Lint git commit with Commitlint
 - 🧪 E2E Testing with [Playwright](https://playwright.dev/)
-- 🎁 Automatic changelog generation with Semantic Release
 - 💡 Absolute Imports using `@` prefix
 - 🗂 VSCode configuration: Debug, Settings, Tasks and extension for PostCSS, ESLint, Prettier, TypeScript, Jest
 - 🤖 SEO metadata with Next generateMetadata
