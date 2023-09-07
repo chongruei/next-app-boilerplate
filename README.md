@@ -1,6 +1,6 @@
 # NEXTJS-APP-ROUTER-BOILERPLATE
 
-Welcome to the Nextjs with app router of our project! This is a Next.js application powered by Node.js version 18.17.1.
+Welcome to our all-in-one Next.js project with app router!
 
 ## Features
 
