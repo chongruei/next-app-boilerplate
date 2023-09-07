@@ -4,7 +4,7 @@ Welcome to the Nextjs with app router of our project! This is a Next.js applicat
 
 ## Features
 
-- ⚡ [Next.js](https://nextjs.org) with App Router and Page Router support
+- ⚡ [Next.js](https://nextjs.org) with App Router support
 - 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
 - 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
 - 🧰 Statem management with [Valtio](https://valtio.pmnd.rs/) and [React Query](https://tanstack.com/query/latest/)
