@@ -2,7 +2,30 @@
 
 Welcome to the Nextjs with app router of our project! This is a Next.js application powered by Node.js version 18.17.1.
 
-## Installation
+## Features
+
+- ⚡ [Next.js](https://nextjs.org) with App Router and Page Router support
+- 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
+- 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
+- 🧰 Statem management with [Valtio](https://valtio.pmnd.rs/) and [React Query](https://tanstack.com/query/latest/)
+- ✅ Strict Mode for TypeScript and React 18
+- 📏 Linter with [ESLint](https://eslint.org) (default NextJS, NextJS Core Web Vitals, Tailwind CSS
+- 💖 Code Formatter with [Prettier](https://prettier.io)
+- 🦊 Husky for Git Hooks
+- 🚫 Lint-staged for running linters on Git staged files
+- 🚓 Lint git commit with Commitlint
+- 🧪 E2E Testing with [Playwright](https://playwright.dev/)
+- 🎁 Automatic changelog generation with Semantic Release
+- 💡 Absolute Imports using `@` prefix
+- 🗂 VSCode configuration: Debug, Settings, Tasks and extension for PostCSS, ESLint, Prettier, TypeScript, Jest
+- 🤖 SEO metadata with Next generateMetadata
+- ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+- 💯 Maximize lighthouse score
+
+## Requirements
+ - Node.js 18.17.1 and pnpm
+
+## Getting started
 
 To install the dependencies, run the following command:
 
@@ -166,30 +189,6 @@ We use Tailwind CSS for styling. Here are some useful features:
 - [Arbitrary values](https://tailwindcss.com/docs/adding-custom-styles): Customize your classes with arbitrary values.
 - [Changing opacity](https://tailwindcss.com/docs/ring-color#changing-the-opacity): Adjust the opacity of elements.
 
-### React Query
-
-A powerful library for managing remote data fetching and synchronization of data between components. It provides a concise and declarative API to handle data fetching, caching, and background updates. This makes working with APIs and handling data in your Next.js application a lot more efficient and straightforward.
-
-### Valtio 
-
-For state management, they have included Valtio, a lightweight and minimalist state management library for React. With Valtio, managing and sharing state throughout your application becomes a breeze. It simplifies complex state management and reduces boilerplate code.
-
 ### SEO
 
 We recommend using the Next.js [generate-metadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata).
-
-### Utility Functions
-
-We use Lodash for utility functions. Feel free to use any of its functions in your code.
-
-### Utility Hooks
-
-Take advantage of the `react-use` library, which provides various useful hooks for React development.
-
-### Testing
-In this project, we utilize [Playwright](https://playwright.dev/) for automated testing. Playwright is a powerful open-source library that allows us to automate browser actions and perform end-to-end testing across different browsers.
-
-### Multiple Servers
-
-If you need to deploy the application on multiple servers, refer to this [guide](https://levelup.gitconnected.com/how-to-deploy-next-js-on-multiple-servers-3b493d4ce0e9) for detailed instructions.
-
