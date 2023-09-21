@@ -176,7 +176,7 @@ To create a new page, follow this structure:
 
 **Note: Avoid excessive DOM size.**
 
-## I18n with next-intl
+### I18n with next-intl
 
 For internationalization (i18n), we use the `next-intl` package. It provides comprehensive support for localization in Next.js applications.
 
