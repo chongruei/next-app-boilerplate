@@ -51,7 +51,7 @@ To start the development server, use the following command:
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application. You can edit the pages by modifying the corresponding files in the `pages` directory. The changes will be automatically updated in the browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application. You can edit the pages by modifying the corresponding files in the `src/app` directory. The changes will be automatically updated in the browser.
 
 ## Start Production Server
 
