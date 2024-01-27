@@ -35,7 +35,11 @@ export async function generateMetadata({ params: { locale } }: Props) {
 
 export default async function QueryLayout({ children }: { children: ReactNode }) {
   const queryClient = getQueryClient()
-  await queryClient.prefetchInfiniteQuery(['posts'], getPosts)
+  await queryClient.prefetchInfiniteQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+    initialPageParam: 1
+  })
   const dehydratedState = dehydrate(queryClient)
 
   return <ReactQueryHydrate state={dehydratedState}>{children}</ReactQueryHydrate>

@@ -9,7 +9,7 @@
     "typescript.tsdk": "node_modules/typescript/lib",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     },
     "eslint.validate": ["react", "javascript", "javascriptreact", "typescript", "typescriptreact"],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -19,7 +19,7 @@
     "gitlens.gitCommands.skipConfirmations": ["fetch:command", "switch:command"],
     "git.confirmSync": false,
     "tailwindCSS.validate": false,
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "diffEditor.ignoreTrimWhitespace": false,
     "css.validate": false,
     "less.validate": false,
