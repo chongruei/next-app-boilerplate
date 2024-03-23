@@ -12,7 +12,7 @@ import { Post } from './post'
 export const Posts = () => {
   const { data, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery<PostType[]>({
     queryKey: ['posts'],
-    queryFn: ({ pageParam = 1 }: { pageParam: number | unknown }) => getPosts({ pageParam }),
+    queryFn: ({ pageParam = 1 }) => getPosts({ pageParam: pageParam as number }),
     initialPageParam: 1,
     getNextPageParam: (_, pages) => pages.length + 1
   })
