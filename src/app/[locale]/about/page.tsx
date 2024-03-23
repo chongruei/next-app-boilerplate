@@ -1,10 +1,15 @@
-'use client'
-
 import { useTranslations } from 'next-intl'
+import { unstable_setRequestLocale } from 'next-intl/server'
 
 import PageLayout from '@/components/pageLayout'
 
-export default function ConfigPage() {
+type Props = {
+  params: { locale: string }
+}
+
+export default function ConfigPage({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale)
+
   const t = useTranslations('AboutPage')
 
   return (

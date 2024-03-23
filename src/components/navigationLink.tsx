@@ -1,16 +1,16 @@
 'use client'
 
-import { usePathname } from 'next-intl/client'
-import Link from 'next-intl/link'
 import { ComponentProps } from 'react'
 
 import clsx from 'clsx'
 
-type Props = Omit<ComponentProps<typeof Link>, 'href'> & {
-  href: string
-}
+import type { AppPathnames } from '@/config'
+import { Link, usePathname } from '@/navigation'
 
-export default function NavigationLink({ href, ...rest }: Props) {
+export default function NavigationLink<Pathname extends AppPathnames>({
+  href,
+  ...rest
+}: ComponentProps<typeof Link<Pathname>>) {
   const pathname = usePathname()
   const isActive = pathname === href
 
