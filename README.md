@@ -64,6 +64,14 @@ pnpm start
 
 ## Run Playwright testings
 
+To install the Playwright, run the following command:
+
+```bash
+pnpm exec playwright install
+```
+
+and
+
 ```bash
 pnpm test
 ```
