@@ -21,8 +21,13 @@ Welcome to our all-in-one Next.js project with app router!
 - ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 - 💯 Maximize lighthouse score
 
+## Use the template with create-next-app
+To create a new project based on this template using create-next-app, run the following command:
+
+npx create-next-app -e https://github.com/chongruei/nextjs-app-boilerplate
+
 ## Requirements
- - Node.js 18.17.1 and pnpm
+ - Node.js >=20.0.0 and pnpm
 
 ## Getting started
 
