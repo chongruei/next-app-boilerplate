@@ -24,7 +24,9 @@ Welcome to our all-in-one Next.js project with app router!
 ## Use the template with create-next-app
 To create a new project based on this template using create-next-app, run the following command:
 
+```bash
 npx create-next-app -e https://github.com/chongruei/nextjs-app-boilerplate
+```
 
 ## Requirements
  - Node.js >=20.0.0 and pnpm
