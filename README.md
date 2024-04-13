@@ -1,6 +1,6 @@
-# NEXTJS-APP-ROUTER-BOILERPLATE
+# NEXT-APP-BOILERPLATE
 
-Welcome to our all-in-one Next.js project with app router!
+Welcome to my all-in-one Next.js project with app router!
 
 ## Features
 
