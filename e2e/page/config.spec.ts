@@ -10,11 +10,11 @@ test.describe('Config Page', () => {
     expect(pageTitle).toBe('Environment variables')
 
     await expect(page.getByTestId('description')).toHaveText(
-      'Please set your environment variables in .env.local file'
+      'This is a environment variables page.'
     )
 
     await expect(page.getByTestId('env-json-values')).toHaveText(
-      '{ "VERSION": "0.1.0", "ENV": "production", "MOCK": "false", "ENV_NAME": "local", "ANALYZE": "false" }'
+      '{ "VERSION": "1.5.0", "MOCK": "false", "ENV_NAME": "", "ANALYZE": "false" }'
     )
   })
 })

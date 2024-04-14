@@ -9,7 +9,7 @@
   },
   "ConfigPage": {
     "title": "Environment variables",
-    "description": "Please set your environment variables in {envName} file"
+    "description": "This is a environment variables page."
   },
   "QueryPage": {
     "title": "React Query",

@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  app:
+    stdin_open: true
+    container_name: next-app-boilerplate
+    image: next-app-boilerplate
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: "Dockerfile"

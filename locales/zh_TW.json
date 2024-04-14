@@ -9,7 +9,7 @@
   },
   "ConfigPage": {
     "title": "環境變數",
-    "description": "請於 {envName} 檔案設定您的環境變數"
+    "description": "這是一個環境變數頁面"
   },
   "QueryPage": {
     "title": "React Query",

@@ -1,5 +1,5 @@
 const createNextIntlPlugin = require('next-intl/plugin')
-
+const { version } = require('./package.json')
 const withNextIntl = createNextIntlPlugin()
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -9,6 +9,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    version
+  },
   eslint: {
     dirs: ['src']
   },

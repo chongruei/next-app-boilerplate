@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-app-router-boilerplate",
-  "version": "0.1.0",
+  "name": "next-app-boilerplate",
+  "version": "1.5.0",
   "private": true,
   "author": {
     "name": "POPO He",
@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "react-env --env APP_ENV --  next build",
-    "start": "react-env --env APP_ENV --  next start",
+    "build": "next build",
+    "start": "next start",
     "format": "prettier --cache --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./prettier.config.js",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",

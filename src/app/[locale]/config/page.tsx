@@ -18,7 +18,7 @@ export default function ConfigPage({ params: { locale } }: Props) {
   return (
     <PageLayout showFooter={false} title={t('title')}>
       <div className="max-w-[460px]" data-testid="description">
-        {t('description', { envName: `.env.${env.ENV_NAME}` })}
+        {t('description')}
       </div>
       <code data-testid="env-json-values">{JSON.stringify(env, null, 2)}</code>
       <TodoList />

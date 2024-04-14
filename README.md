@@ -95,25 +95,9 @@ ANALYZE=true pnpm build
 
 To build and run the application using Docker, you can use the following commands:
 
-For local environment:
-
 ```plaintext
-docker-compose -f docker-compose.local.yml build
-docker-compose -f docker-compose.local.yml up
-```
-
-For development environment:
-
-```plaintext
-docker-compose -f docker-compose.dev.yml build
-docker-compose -f docker-compose.dev.yml up
-```
-
-For staging environment:
-
-```plaintext
-docker-compose -f docker-compose.stage.yml build
-docker-compose -f docker-compose.stage.yml up
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up
 ```
 
 # VSCode Developer Setup
