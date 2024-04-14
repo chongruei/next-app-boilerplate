@@ -169,12 +169,6 @@ To create a new page, follow this structure:
         📁 <= place new page files here
 ```
 
-### Images
-
-**Note: Avoid using next/image as it consumes server CPU usage. If necessary, set up an image loader like img proxy.**
-
-**Note: Avoid excessive DOM size.**
-
 ### I18n with next-intl
 
 For internationalization (i18n), we use the `next-intl` package. It provides comprehensive support for localization in Next.js applications.
