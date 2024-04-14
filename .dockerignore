@@ -1,6 +1,4 @@
-Dockerfile.dev
-Dockerfile.local
-Dockerfile.stage
+Dockerfile
 
 .dockerignore
 node_modules
