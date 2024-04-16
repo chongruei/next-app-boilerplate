@@ -7,6 +7,7 @@ Welcome to my all-in-one Next.js project with app router!
 - ⚡ [Next.js](https://nextjs.org) with App Router support
 - 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
 - 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
+- 🖼️ Navigate animation with [next-view-transitions](https://github.com/shuding/next-view-transitions)
 - 🧰 Statem management with [Valtio](https://valtio.pmnd.rs/) and [React Query](https://tanstack.com/query/latest/)
 - ✅ Strict Mode for TypeScript and React 18
 - 📏 Linter with [ESLint](https://eslint.org) (default NextJS, NextJS Core Web Vitals, Tailwind CSS
