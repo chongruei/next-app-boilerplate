@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server'
+import { ViewTransitions } from 'next-view-transitions'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 
@@ -31,13 +32,15 @@ export async function generateMetadata({ params: { locale } }: Props) {
 
 export default async function LocaleLayout({ children, params: { locale } }: Props) {
   return (
-    <html className="h-full" lang={locale}>
-      <body className={clsx(inter.className, 'flex h-full flex-col')}>
-        <QueryProvider>
-          <Navigation />
-          {children}
-        </QueryProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html className="h-full" lang={locale}>
+        <body className={clsx(inter.className, 'flex h-full flex-col')}>
+          <QueryProvider>
+            <Navigation />
+            {children}
+          </QueryProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
