@@ -3,9 +3,9 @@ changelog:
     - title: Core Changes
       labels:
         - '*'
-    #   exclude:
-    #     labels:
-    #       - dependencies
-    # - title: 👒 Dependencies
-    #   labels:
-    #     - dependencies
+      exclude:
+        labels:
+          - Bug
+    - title: Misc Changes
+      labels:
+        - Bug
