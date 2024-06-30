@@ -4,6 +4,8 @@ import { ChangeEvent, ReactNode, useTransition } from 'react'
 
 import clsx from 'clsx'
 
+import { localeType } from '@/config'
+
 import { usePathname, useRouter } from '../navigation'
 
 type Props = {
@@ -20,7 +22,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
   function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const nextLocale = event.target.value
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale })
+      router.replace(pathname, { locale: nextLocale as localeType })
     })
   }
 

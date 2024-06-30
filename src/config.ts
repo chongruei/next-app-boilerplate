@@ -1,6 +1,7 @@
-import { Pathnames } from 'next-intl/navigation'
+import { Pathnames } from 'next-intl/routing'
 
 export const locales = ['en', 'zh-TW', 'zh-CN'] as const
+export type localeType = 'en' | 'zh-TW' | 'zh-CN'
 
 export const pathnames = {
   '/': '/',
