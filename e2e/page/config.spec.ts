@@ -14,7 +14,7 @@ test.describe('Config Page', () => {
     )
 
     await expect(page.getByTestId('env-json-values')).toHaveText(
-      '{ "VERSION": "1.7.0", "MOCK": "false", "ENV_NAME": "", "ANALYZE": "false" }'
+      '{ "VERSION": "1.8.0", "MOCK": "false", "ENV_NAME": "", "ANALYZE": "false" }'
     )
   })
 })
