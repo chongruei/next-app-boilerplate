@@ -1,18 +1,25 @@
+import { use } from "react";
 import { useTranslations } from 'next-intl'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 
 import PageLayout from '@/components/pageLayout'
 import { Posts } from '@/components/posts/posts'
 
 type Props = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export const dynamic = 'force-static'
 export const revalidate = 600
 
-export default function QueryPage({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale)
+export default function QueryPage(props: Props) {
+  const params = use(props.params);
+
+  const {
+    locale
+  } = params;
+
+  setRequestLocale(locale)
 
   const t = useTranslations('QueryPage')
 

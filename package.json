@@ -20,14 +20,14 @@
   "dependencies": {
     "@tanstack/react-query": "^5.59.0",
     "@types/node": "22.7.4",
-    "@types/react": "18.3.11",
-    "@types/react-dom": "18.3.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "axios": "^1.7.7",
     "next": "16.2.10",
-    "next-intl": "3.20.0",
-    "next-view-transitions": "^0.3.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next-intl": "4.13.2",
+    "next-view-transitions": "^0.3.5",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "tailwindcss": "3.4.13",
     "typescript": "5.6.2",
     "valtio": "^2.0.0"
@@ -51,14 +51,8 @@
     "prettier-plugin-tailwindcss": "^0.6.8"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=20.9.0",
     "pnpm": ">=9.10.0"
   },
-  "packageManager": "pnpm@9.10.0",
-  "pnpm": {
-    "overrides": {
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0"
-    }
-  }
+  "packageManager": "pnpm@9.10.0"
 }

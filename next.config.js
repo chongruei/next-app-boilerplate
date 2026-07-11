@@ -12,9 +12,6 @@ const nextConfig = {
   env: {
     version
   },
-  eslint: {
-    dirs: ['src']
-  },
   output: 'standalone'
 }
 
