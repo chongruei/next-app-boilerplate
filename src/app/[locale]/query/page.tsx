@@ -1,6 +1,6 @@
-import { use } from "react";
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import { use } from 'react'
 
 import PageLayout from '@/components/pageLayout'
 import { Posts } from '@/components/posts/posts'
@@ -13,11 +13,9 @@ export const dynamic = 'force-static'
 export const revalidate = 600
 
 export default function QueryPage(props: Props) {
-  const params = use(props.params);
+  const params = use(props.params)
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
 

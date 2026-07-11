@@ -35,7 +35,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
     >
       <p className="sr-only">{label}</p>
       <select
-        className="inline-flex max-w-[6rem] appearance-none bg-transparent py-3 pl-2 pr-6"
+        className="inline-flex max-w-[6rem] appearance-none bg-transparent py-3 pr-6 pl-2"
         data-testid="locale-switcher-select"
         defaultValue={defaultValue}
         disabled={isPending}
@@ -43,7 +43,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
       >
         {children}
       </select>
-      <span className="pointer-events-none absolute right-2 top-[8px]">⌄</span>
+      <span className="pointer-events-none absolute top-[8px] right-2">⌄</span>
     </label>
   )
 }

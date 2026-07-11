@@ -23,11 +23,9 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   const t = await getTranslations({ locale, namespace: 'LocaleLayout' })
 
@@ -38,15 +36,11 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function LocaleLayout(props: Props) {
-  const params = await props.params;
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
-  const {
-    children
-  } = props;
+  const { children } = props
 
   return (
     <ViewTransitions>

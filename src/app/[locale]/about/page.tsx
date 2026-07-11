@@ -1,6 +1,6 @@
-import { use } from "react";
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import { use } from 'react'
 
 import PageLayout from '@/components/pageLayout'
 
@@ -11,11 +11,9 @@ type Props = {
 export const dynamic = 'force-static'
 
 export default function ConfigPage(props: Props) {
-  const params = use(props.params);
+  const params = use(props.params)
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
 

@@ -1,6 +1,6 @@
-import { use } from "react";
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
+import { use } from 'react'
 
 import PageLayout from '@/components/pageLayout'
 import TodoList from '@/components/todoList'
@@ -14,11 +14,9 @@ type Props = {
 }
 
 export default function ConfigPage(props: Props) {
-  const params = use(props.params);
+  const params = use(props.params)
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   setRequestLocale(locale)
 

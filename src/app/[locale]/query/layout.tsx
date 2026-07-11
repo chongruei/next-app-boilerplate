@@ -16,11 +16,9 @@ type Props = {
 }
 
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   try {
     const t = await getTranslations({ locale })
