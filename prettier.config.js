@@ -19,5 +19,5 @@ module.exports = {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
-  tailwindConfig: './tailwind.config.ts'
+  tailwindStylesheet: './src/app/globals.css'
 }
