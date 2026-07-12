@@ -10,7 +10,7 @@ type Props = {
 
 export const dynamic = 'force-static'
 
-export default function ConfigPage(props: Props) {
+export default function AboutPage(props: Props) {
   const params = use(props.params)
 
   const { locale } = params
