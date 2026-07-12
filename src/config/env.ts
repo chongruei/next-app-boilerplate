@@ -1,8 +1,8 @@
 export const env = {
   VERSION: process.env.version || '',
-  MOCK: process.env.MOCK || 'false',
-  ENV_NAME: process.env.ENV_NAME || '',
-  ANALYZE: process.env.NEXT_PUBLIC_ANALYZE || 'false'
+  MOCK: process.env.NEXT_PUBLIC_MOCK || 'false',
+  ENV_NAME: process.env.NEXT_PUBLIC_ENV_NAME || '',
+  ANALYZE: process.env.ANALYZE || 'false'
 }
 
 export const isLocal = env.ENV_NAME === 'local'
