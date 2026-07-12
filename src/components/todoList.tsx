@@ -63,16 +63,32 @@ const Todos: FC = () => {
 const CreateTodo: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const handleAddTodo = () => {
+    const input = inputRef.current
+    if (!input) return
+
+    if (!input.checkValidity()) {
+      input.reportValidity()
+      return
+    }
+
+    const description = input.value.trim()
+    if (!description) return
+
+    addTodo(description)
+    input.value = ''
+  }
+
   return (
     <section className="flex gap-x-2">
       <input
         ref={inputRef}
-        className="px-2 text-gray-900"
+        className="bg-white px-2 text-gray-900"
         minLength={2}
         name="description"
         type="text"
       />
-      <button className="add" onClick={() => addTodo(inputRef.current?.value ?? '')}>
+      <button className="add" onClick={handleAddTodo}>
         Add new
       </button>
     </section>
