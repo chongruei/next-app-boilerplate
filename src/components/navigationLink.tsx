@@ -15,8 +15,8 @@ export default function NavigationLink({ href, ...rest }: ComponentProps<typeof 
 
   return (
     <TransitionLink
-      aria-current={isActive}
-      href={`/${locale}/${href}`}
+      aria-current={isActive ? 'page' : undefined}
+      href={href === '/' ? `/${locale}` : `/${locale}${href}`}
       className={clsx(
         'inline-block px-2 py-3 transition-colors',
         isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'

@@ -73,6 +73,15 @@ export default defineConfig({
     command: 'pnpm build && pnpm start',
     url: 'http://localhost:3000',
     timeout: 120000,
-    reuseExistingServer: !process.env.CI
+    // Always start a fresh server: an already-running local instance
+    // wouldn't have the env vars below, so config.spec.ts could read
+    // stale values from a leftover process instead of the real ones.
+    reuseExistingServer: false,
+    // Exercise the public env vars end-to-end so the /config page has
+    // real values to assert against (see config.spec.ts).
+    env: {
+      NEXT_PUBLIC_ENV_NAME: 'local',
+      NEXT_PUBLIC_MOCK: 'true'
+    }
   }
 })

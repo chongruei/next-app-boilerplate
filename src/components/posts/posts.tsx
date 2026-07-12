@@ -10,14 +10,20 @@ import { getPosts } from '@/services/postServices'
 import { Post } from './post'
 
 export const Posts = () => {
-  const { data, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery<PostType[]>({
-    queryKey: ['posts'],
-    queryFn: ({ pageParam = 1 }) => getPosts({ pageParam: pageParam as number }),
-    initialPageParam: 1,
-    getNextPageParam: (_, pages) => pages.length + 1
-  })
+  const { data, isPending, isError, isFetchingNextPage, fetchNextPage, hasNextPage } =
+    useInfiniteQuery<PostType[]>({
+      queryKey: ['posts'],
+      queryFn: ({ pageParam = 1 }) => getPosts({ pageParam: pageParam as number }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage, pages) => (lastPage.length > 0 ? pages.length + 1 : undefined)
+    })
 
-  if (!data) return <div>Not found</div>
+  if (isPending) return <div>Loading...</div>
+
+  // Only take over the whole view when the initial load failed. A later
+  // fetchNextPage error keeps `data` populated, so keep showing the loaded
+  // posts (and the Load More retry) instead of wiping them.
+  if (isError && !data) return <div>Something went wrong.</div>
 
   return (
     <div className="divide-y" data-testid="post-container">
