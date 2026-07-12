@@ -6,13 +6,9 @@ import { ComponentProps } from 'react'
 
 import clsx from 'clsx'
 
-import type { AppPathnames } from '@/config'
 import { Link, usePathname } from '@/navigation'
 
-export default function NavigationLink<Pathname extends AppPathnames>({
-  href,
-  ...rest
-}: ComponentProps<typeof Link<Pathname>>) {
+export default function NavigationLink({ href, ...rest }: ComponentProps<typeof Link>) {
   const pathname = usePathname()
   const locale = useLocale()
   const isActive = pathname === href

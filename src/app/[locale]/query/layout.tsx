@@ -12,10 +12,14 @@ import { getPosts } from '@/services/postServices'
 
 type Props = {
   children: ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params: { locale } }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params
+
+  const { locale } = params
+
   try {
     const t = await getTranslations({ locale })
 

@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
+import { use } from 'react'
 
 import PageLayout from '@/components/pageLayout'
 import TodoList from '@/components/todoList'
@@ -9,11 +10,15 @@ import { env } from '@/config/env'
 export const dynamic = 'force-static'
 
 type Props = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export default function ConfigPage({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale)
+export default function ConfigPage(props: Props) {
+  const params = use(props.params)
+
+  const { locale } = params
+
+  setRequestLocale(locale)
 
   const t = useTranslations('ConfigPage')
 
