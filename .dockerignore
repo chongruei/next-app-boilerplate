@@ -1,25 +1,31 @@
 Dockerfile
-
 .dockerignore
+docker-compose.yml
+
 node_modules
+npm-debug.log*
 
-npm - debug.log
-README.md
-
-cypress
-cypress.config.ts
-
-.yml
-.out
 .next
+out
 .git
+.github
 .husky
-.eslintrc
-.prettier.config.js
-.prettierignore
-.commitlint.config.js
-.nextjs-app-router-boilerplate.code-workspace
+.vscode
 
+# env & secrets
+.env
+.env.*
+
+# config / docs not needed in the image
+*.md
+eslint.config.mjs
+prettier.config.js
+.prettierignore
+commitlint.config.js
+*.code-workspace
+
+# tests
 e2e
 test-results
+playwright-report
 playwright.config.ts
