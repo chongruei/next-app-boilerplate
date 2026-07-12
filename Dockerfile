@@ -1,4 +1,4 @@
-FROM node:20.19-alpine AS deps
+FROM node:24-alpine AS deps
 RUN apk add --no-cache libc6-compat
 RUN npm install -g pnpm
 WORKDIR /home/node/app
@@ -6,7 +6,7 @@ COPY pnpm-lock.yaml .npmr[c] ./
 
 RUN pnpm fetch
 
-FROM node:20.19-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /home/node/app
 COPY --from=deps /home/node/app/node_modules ./node_modules
 COPY . .
@@ -16,7 +16,7 @@ RUN pnpm install
 
 RUN pnpm build
 
-FROM node:20.19-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /home/node/app
 
 COPY --from=builder /home/node/app/next.config.js ./
