@@ -20,7 +20,10 @@ export const Posts = () => {
 
   if (isPending) return <div>Loading...</div>
 
-  if (isError) return <div>Something went wrong.</div>
+  // Only take over the whole view when the initial load failed. A later
+  // fetchNextPage error keeps `data` populated, so keep showing the loaded
+  // posts (and the Load More retry) instead of wiping them.
+  if (isError && !data) return <div>Something went wrong.</div>
 
   return (
     <div className="divide-y" data-testid="post-container">
