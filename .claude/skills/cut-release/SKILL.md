@@ -42,7 +42,7 @@ Show the drafted notes to the user before publishing, unless they've already ask
   ```
 - Or have them use the GitHub web UI: Releases → Draft a new release → Choose a tag → type `vX.Y.Z` → Create new tag on publish.
 
-After they say it's done, **verify independently** — `mcp__github__get_tag` or `list_tags` — before proceeding; don't trust "done" at face value, the push can silently fail or land on the wrong ref, and GitHub's API can lag a few seconds behind a fresh push.
+After they say it's done, **verify independently** — `mcp__github__get_tag` or `list_tags` — before proceeding; don't trust "done" at face value, the push can silently fail or land on the wrong ref, and GitHub's API can lag a few seconds behind a fresh push. Tag existence alone isn't enough: also resolve the tag's target commit SHA and compare it against the merged version-bump commit from Step 1 (e.g. the SHA `mcp__github__list_commits` reports as the tip of `main`) — a tag can exist while pointing at the wrong commit.
 
 ## 4. Apply curated notes
 
