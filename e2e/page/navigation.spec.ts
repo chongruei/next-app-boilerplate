@@ -26,4 +26,11 @@ test.describe('Navigation links', () => {
     await page.locator('nav a[href="/en/about"]').click()
     await expect(page).toHaveURL('http://localhost:3000/en/about')
   })
+
+  test('marks exactly the current page as active via aria-current', async ({ page }) => {
+    const activeLinks = page.locator('nav a[aria-current="page"]')
+
+    await expect(activeLinks).toHaveCount(1)
+    await expect(activeLinks).toHaveAttribute('href', '/en')
+  })
 })
