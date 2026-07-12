@@ -21,14 +21,16 @@ jobs:
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
+          persist-credentials: false
           ref: ${{ github.event.inputs.tag || github.ref_name }}
 
       - name: Verify tag matches package.json version
+        env:
+          RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
         run: |
-          TAG="${{ github.event.inputs.tag || github.ref_name }}"
           EXPECTED="v$(node -p "require('./package.json').version")"
-          if [ "$TAG" != "$EXPECTED" ]; then
-            echo "::error::Tag $TAG does not match package.json version ($EXPECTED). Bump package.json or use the matching tag."
+          if [ "$RELEASE_TAG" != "$EXPECTED" ]; then
+            echo "::error::Tag $RELEASE_TAG does not match package.json version ($EXPECTED). Bump package.json or use the matching tag."
             exit 1
           fi
 
