@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag to release (defaults to the pushed tag when triggered automatically)'
-        required: false
+        description: 'Tag to release (e.g. v1.13.0)'
+        required: true
       body:
         description: 'Custom release notes (Markdown). Leave blank to auto-generate from merged PRs using .github/release.yml'
         required: false
@@ -19,9 +19,21 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref_name }}
+
+      - name: Verify tag matches package.json version
+        run: |
+          TAG="${{ github.event.inputs.tag || github.ref_name }}"
+          EXPECTED="v$(node -p "require('./package.json').version")"
+          if [ "$TAG" != "$EXPECTED" ]; then
+            echo "::error::Tag $TAG does not match package.json version ($EXPECTED). Bump package.json or use the matching tag."
+            exit 1
+          fi
+
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           tag_name: ${{ github.event.inputs.tag || github.ref_name }}
           body: ${{ github.event.inputs.body }}
