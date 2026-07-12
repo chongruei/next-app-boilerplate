@@ -1,11 +1,11 @@
 ---
 name: pr-review-gate
-description: Check CI and CodeRabbit review status across one or more PRs in this repo, self-fix any real issue that CI or CodeRabbit finds (verify empirically before trusting the finding), reply to and resolve CodeRabbit threads, and report a clear ready/not-ready summary — but never merge without explicit user confirmation. Use whenever the user asks to check PR status, review CodeRabbit comments, "查看 PR 狀態", "檢查 CI", or says something like "全部修" about outstanding review feedback.
+description: Check CI and CodeRabbit review status across one or more PRs in this repo, self-fix any real issue that CI or CodeRabbit finds (verify empirically before trusting the finding), reply to and resolve CodeRabbit threads, and auto-merge once a PR is genuinely Ready — report what happened either way. Use whenever the user asks to check PR status, review CodeRabbit comments, "查看 PR 狀態", "檢查 CI", or says something like "全部修" about outstanding review feedback.
 ---
 
 # PR Review Gate
 
-Standing workflow for shepherding PRs in `chongruei/next-app-boilerplate` through CI + CodeRabbit review to a mergeable state, established over many rounds in this repo. The core rule: **never auto-merge**. Every merge needs an explicit "好" / confirmation from the user, even if everything is green.
+Standing workflow for shepherding PRs in `chongruei/next-app-boilerplate` through CI + CodeRabbit review to a mergeable state, established over many rounds in this repo. **Auto-merge is authorized once a PR is classified Ready** (see below) — no need to wait for an explicit "好" on every PR. This is a deliberate, standing exception to the general "confirm before risky actions" default, granted by the user for this specific, narrow condition. Still never merge a PR that's merely "probably fine" — the Ready bar below is intentionally strict, and if there's any doubt (flaky CI, an ambiguous CodeRabbit comment, a merge conflict), fall back to reporting and asking.
 
 ## Per-PR check
 
@@ -31,6 +31,10 @@ Do not take a finding at face value — verify it against the actual code first 
 - Pre-installed Chromium at `/opt/pw-browsers/chromium-*/chrome-linux/chrome` works fine for local browser checks that don't need blocked hosts.
 - `.husky/pre-commit` runs `pnpm lint-staged` then `pnpm typecheck` (fast) — on current `main` this is cheap enough to just let it run, don't reach for `--no-verify` here. If you're on an older branch where the hook still runs the full Playwright suite, run `pnpm lint-staged` and `pnpm typecheck` explicitly yourself first, then use `--no-verify` only to skip the long e2e run (not to skip everything blindly) — and say in your report to the user which checks you bypassed and why.
 
+## Merging
+
+Once a PR is classified **Ready**, call `merge_pull_request` right away — don't wait for a confirmation message first. After merging, report what happened (PR number, title, what was fixed along the way if anything). For a PR still **Needs work**, fix what you can per the section above, then report status and what's still blocking — don't merge a PR that isn't Ready no matter how minor the gap looks.
+
 ## Reporting back
 
-Summarize as a compact table: PR number, title, CI status, CodeRabbit status, action taken. Explicitly list which PRs are ready to merge and wait for the user to say which ones (or "全部") before calling `merge_pull_request`. If you fixed something, say what you fixed and why — the user has asked for this transparency repeatedly.
+Summarize as a compact table: PR number, title, CI status, CodeRabbit status, action taken (including "merged" where applicable). If you fixed something, say what you fixed and why — the user has asked for this transparency repeatedly.
