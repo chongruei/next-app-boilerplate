@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test'
 
-test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:3000/query')
-})
-
 test.describe('Query Page', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:3000/query')
+  })
+
   test('should display the title and description in English', async ({ page }) => {
     const pageTitle = await page.innerText('h1')
     expect(pageTitle).toBe('React Query')

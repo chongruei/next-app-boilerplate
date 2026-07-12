@@ -16,7 +16,7 @@
     "analyze": "ANALYZE=true next build",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:unit": "node --test src/**/*.test.ts",
+    "test:unit": "node --test \"src/**/*.test.ts\"",
     "prepare": "husky"
   },
   "dependencies": {
