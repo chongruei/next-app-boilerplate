@@ -10,7 +10,7 @@ Standing workflow for publishing a versioned release of `chongruei/next-app-boil
 ## 1. Version bump
 
 - Decide the next semver version from what's changed since the last tag (check `mcp__github__list_tags` / `list_releases` for the last one). Default to a minor bump if there's a notable feature/upgrade, patch for fixes-only — ask the user if genuinely ambiguous.
-- Bump `"version"` in `package.json`, commit, open a PR, wait for CI green, merge (per the `pr-review-gate` skill — never auto-merge).
+- Bump `"version"` in `package.json`, commit, open a PR, wait for CI green, merge (per the `pr-review-gate` skill — never auto-merge). Record the resulting merge commit SHA — that's the exact commit the tag must point at, not whatever `main`'s tip happens to be later (it can advance if other work lands before the tag is pushed).
 
 ## 2. Draft release notes
 
@@ -42,7 +42,7 @@ Show the drafted notes to the user before publishing, unless they've already ask
   ```
 - Or have them use the GitHub web UI: Releases → Draft a new release → Choose a tag → type `vX.Y.Z` → Create new tag on publish.
 
-After they say it's done, **verify independently** — `mcp__github__get_tag` or `list_tags` — before proceeding; don't trust "done" at face value, the push can silently fail or land on the wrong ref, and GitHub's API can lag a few seconds behind a fresh push. Tag existence alone isn't enough: also resolve the tag's target commit SHA and compare it against the merged version-bump commit from Step 1 (e.g. the SHA `mcp__github__list_commits` reports as the tip of `main`) — a tag can exist while pointing at the wrong commit.
+After they say it's done, **verify independently** — `mcp__github__get_tag` or `list_tags` — before proceeding; don't trust "done" at face value, the push can silently fail or land on the wrong ref, and GitHub's API can lag a few seconds behind a fresh push. Tag existence alone isn't enough: also resolve the tag's target commit SHA and compare it against the exact merge commit SHA recorded in Step 1 — don't infer it from the current tip of `main`, which can have moved. A tag can exist while pointing at the wrong commit.
 
 ## 4. Apply curated notes
 
