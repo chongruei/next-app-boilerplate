@@ -41,13 +41,10 @@ pnpm install
 
 ## Local Configuration
 
-Before starting the development server, make sure to add the local configuration file `.env.local` with the following content:
+Before starting the development server, copy `.env.example` to `.env.local`:
 
-```plaintext
-# GENERATE_SOURCEMAP=false
-NEXT_PUBLIC_VERSION=$npm_package_version
-NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_ENV_NAME=local
+```bash
+cp .env.example .env.local
 ```
 
 ## Start Development Server
