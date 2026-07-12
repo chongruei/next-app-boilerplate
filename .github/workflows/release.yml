@@ -1,0 +1,28 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release (defaults to the pushed tag when triggered automatically)'
+        required: false
+      body:
+        description: 'Custom release notes (Markdown). Leave blank to auto-generate from merged PRs using .github/release.yml'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          body: ${{ github.event.inputs.body }}
+          generate_release_notes: ${{ github.event.inputs.body == '' || github.event.inputs.body == null }}
