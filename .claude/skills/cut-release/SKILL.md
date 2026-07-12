@@ -10,7 +10,7 @@ Standing workflow for publishing a versioned release of `chongruei/next-app-boil
 ## 1. Version bump
 
 - Decide the next semver version from what's changed since the last tag (check `mcp__github__list_tags` / `list_releases` for the last one). Default to a minor bump if there's a notable feature/upgrade, patch for fixes-only — ask the user if genuinely ambiguous.
-- Bump `"version"` in `package.json`, commit, open a PR, wait for CI green, merge (per the `pr-review-gate` skill — never auto-merge). Record the resulting merge commit SHA — that's the exact commit the tag must point at, not whatever `main`'s tip happens to be later (it can advance if other work lands before the tag is pushed).
+- Bump `"version"` in `package.json`, commit, open a PR, wait for CI green, merge once it's classified Ready (per the `pr-review-gate` skill — same auto-merge rule applies here, no special-casing for release PRs). Record the resulting merge commit SHA — that's the exact commit the tag must point at, not whatever `main`'s tip happens to be later (it can advance if other work lands before the tag is pushed).
 
 ## 2. Draft release notes
 
