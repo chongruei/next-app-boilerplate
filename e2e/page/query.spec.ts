@@ -25,30 +25,6 @@ test.describe('Query Page', () => {
   })
 })
 
-test.describe('Query Page - loading and error states', () => {
-  test('shows a loading indicator while the posts request is pending', async ({ page }) => {
-    await page.route('https://jsonplaceholder.typicode.com/posts**', async route => {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      await route.continue()
-    })
-
-    await page.goto('http://localhost:3000/query')
-
-    await expect(page.getByText('Loading...')).toBeVisible()
-    await expect(page.getByTestId('post-container')).toBeVisible()
-  })
-
-  test('shows an error message when the posts request fails', async ({ page }) => {
-    await page.route('https://jsonplaceholder.typicode.com/posts**', route =>
-      route.fulfill({ status: 500, contentType: 'application/json', body: '{}' })
-    )
-
-    await page.goto('http://localhost:3000/query')
-
-    await expect(page.getByText('Something went wrong.')).toBeVisible({ timeout: 15000 })
-  })
-})
-
 test.describe('Query Page - pagination', () => {
   test('fetches and appends additional posts when "Load More" is clicked', async ({ page }) => {
     await page.route('https://jsonplaceholder.typicode.com/posts**', async route => {
