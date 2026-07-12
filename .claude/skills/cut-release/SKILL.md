@@ -14,7 +14,7 @@ Standing workflow for publishing a versioned release of `chongruei/next-app-boil
 
 ## 2. Draft release notes
 
-Gather every PR merged since the previous tag: `mcp__github__list_pull_requests` (state closed, sorted by created desc — paginate/slice if the result is large, it can exceed the tool-result token cap) and `mcp__github__list_releases` to find the previous tag's `published_at` as the cutoff. Include Dependabot PRs, not just this session's PRs.
+Gather every PR merged since the previous tag: `mcp__github__list_pull_requests` (state closed, sorted by created desc — paginate/slice if the result is large, it can exceed the tool-result token cap), then filter to `merged_at != null` (state `closed` also returns PRs closed _without_ merging, e.g. a superseded PR — exclude those). Use the previous tag's commit date (`mcp__github__get_tag` / the tagged commit's date, not the GitHub Release's `published_at`, which can lag or predate some of its own PRs) as the cutoff, and keep only PRs with `merged_at` after it. Include Dependabot PRs, not just this session's PRs.
 
 Categorize by conventional-commit prefix / intent into the house style used in past releases (see `mcp__github__get_latest_release` for the exact format to match: `## What's Changed` heading, `**Full Changelog**` compare link at the end). For a substantial release, split into labeled sections rather than one flat list — this repo's readers have responded well to:
 
@@ -46,9 +46,9 @@ After they say it's done, **verify independently** — `mcp__github__get_tag` or
 
 ## 4. Apply curated notes
 
-The tag push alone triggers `release.yml` and creates a release with GitHub's auto-generated notes (flat, ungrouped, per `.github/release.yml`'s wildcard rule) — that's expected, not a bug. To replace it with the categorized draft from step 2:
+The tag push alone triggers `release.yml` and creates a release with GitHub's auto-generated notes (flat, ungrouped, per `.github/release.yml`'s wildcard rule) — that's expected, not a bug. Before dispatching the curated update, wait for that push-triggered run to reach `status: completed` (`mcp__github__actions_list` → `list_workflow_runs` filtered to `event: push` / the tag ref). Dispatching while it's still in progress races the two runs, and if the auto-generated one finishes last it overwrites your curated body. Once it's done, replace it with the categorized draft from step 2:
 
-```
+```text
 mcp__github__actions_run_trigger (method: run_workflow, workflow_id: release.yml, ref: main,
   inputs: { tag: "vX.Y.Z", body: "<curated markdown>" })
 ```
@@ -57,4 +57,4 @@ mcp__github__actions_run_trigger (method: run_workflow, workflow_id: release.yml
 
 ## 5. Verify
 
-Poll `mcp__github__actions_get` (method `get_workflow_run`) until `status: completed`, then `mcp__github__get_release_by_tag` to confirm the body actually updated (the API can return the stale pre-run body if you check too early — re-fetch after confirming the run completed). Show the user the release URL.
+Poll `mcp__github__actions_get` (method `get_workflow_run`) until `status: completed` AND `conclusion: success` — `completed` alone also covers failed/cancelled runs. If the conclusion isn't `success`, stop and report the workflow failure rather than presenting it as done. Once confirmed, `mcp__github__get_release_by_tag` to check the body actually updated (the API can return the stale pre-run body if you check too early — re-fetch after confirming the run completed). Show the user the release URL.
