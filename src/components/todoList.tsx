@@ -67,15 +67,14 @@ const CreateTodo: FC = () => {
     const input = inputRef.current
     if (!input) return
 
-    if (!input.checkValidity()) {
+    input.value = input.value.trim()
+
+    if (!input.value || !input.checkValidity()) {
       input.reportValidity()
       return
     }
 
-    const description = input.value.trim()
-    if (!description) return
-
-    addTodo(description)
+    addTodo(input.value)
     input.value = ''
   }
 
