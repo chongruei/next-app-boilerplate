@@ -12,6 +12,7 @@
     "start": "next start",
     "format": "prettier --cache --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./prettier.config.js",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "analyze": "ANALYZE=true next build",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
@@ -47,6 +48,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.2.10",
     "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
     "postcss": "8.5.16",
     "prettier": "^3.9.5",
     "prettier-plugin-tailwindcss": "^0.8.0"
@@ -56,6 +58,15 @@
     "pnpm": ">=9.10.0"
   },
   "packageManager": "pnpm@9.10.0",
+  "lint-staged": {
+    "*.{js,jsx,mjs,cjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss,md,json,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
   "pnpm": {
     "overrides": {
       "minimatch@<3.1.4": ">=3.1.4 <4.0.0",

@@ -4,6 +4,9 @@ import nextCoreWebVitals from 'eslint-config-next/core-web-vitals'
 import react from 'eslint-plugin-react'
 
 const config = [
+  {
+    ignores: ['.next/', 'out/', 'build/', 'coverage/', 'playwright-report/', 'test-results/', 'next-env.d.ts']
+  },
   js.configs.recommended,
   ...nextCoreWebVitals,
   ...tseslint.configs['flat/recommended'],
