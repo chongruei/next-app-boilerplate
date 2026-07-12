@@ -16,7 +16,7 @@
     "analyze": "ANALYZE=true next build",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "test:unit": "node --experimental-test-coverage --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-exclude=\"**/*.test.ts\" --test \"src/**/*.test.ts\"",
+    "test:unit": "node --experimental-test-coverage --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test-coverage-include=\"src/**/*.{ts,tsx}\" --test-coverage-exclude=\"**/*.test.ts\" --test \"src/**/*.test.ts\"",
     "test:lighthouse": "lhci autorun",
     "prepare": "husky"
   },
