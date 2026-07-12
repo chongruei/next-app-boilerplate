@@ -1,146 +1,141 @@
 import assert from 'node:assert/strict'
-import { after, before, test } from 'node:test'
+import { test } from 'node:test'
 
-/**
- * env.ts computes its exported `env` object once, at module evaluation time,
- * from `process.env`. To exercise different combinations of environment
- * variables per test we re-import the module with a unique query string on
- * every call, which forces Node's ESM loader to treat it as a brand new
- * module and re-evaluate it against the current `process.env`.
- */
-let importCount = 0
-const importEnv = () => import(`./env.ts?cachebust=${importCount++}`)
+import { computeEnv, deriveModeFlags } from './env.ts'
 
-const ENV_KEYS = [
-  'version',
-  'NEXT_PUBLIC_MOCK',
-  'NEXT_PUBLIC_ENV_NAME',
-  'ANALYZE',
-  'MOCK',
-  'ENV_NAME',
-  'NEXT_PUBLIC_ANALYZE'
-] as const
-
-const originalEnv: Partial<Record<(typeof ENV_KEYS)[number], string | undefined>> = {}
-
-before(() => {
-  for (const key of ENV_KEYS) originalEnv[key] = process.env[key]
-})
-
-after(() => {
-  for (const key of ENV_KEYS) {
-    if (originalEnv[key] === undefined) delete process.env[key]
-    else process.env[key] = originalEnv[key]
-  }
-})
-
-const clearEnvKeys = () => {
-  for (const key of ENV_KEYS) delete process.env[key]
-}
-
-test('env.MOCK falls back to "false" when NEXT_PUBLIC_MOCK is not set', async () => {
-  clearEnvKeys()
-
-  const { env } = await importEnv()
+test('computeEnv.MOCK falls back to "false" when NEXT_PUBLIC_MOCK is not set', () => {
+  const env = computeEnv({})
 
   assert.equal(env.MOCK, 'false')
 })
 
-test('env.MOCK reads its value from NEXT_PUBLIC_MOCK', async () => {
-  clearEnvKeys()
-  process.env.NEXT_PUBLIC_MOCK = 'true'
-
-  const { env } = await importEnv()
+test('computeEnv.MOCK reads its value from NEXT_PUBLIC_MOCK', () => {
+  const env = computeEnv({ NEXT_PUBLIC_MOCK: 'true' })
 
   assert.equal(env.MOCK, 'true')
 })
 
-test('env.MOCK ignores the legacy MOCK variable', async () => {
-  clearEnvKeys()
-  process.env.MOCK = 'true'
-
-  const { env } = await importEnv()
+test('computeEnv.MOCK ignores the legacy MOCK variable', () => {
+  const env = computeEnv({ MOCK: 'true' })
 
   assert.equal(env.MOCK, 'false')
 })
 
-test('env.ENV_NAME falls back to an empty string when NEXT_PUBLIC_ENV_NAME is not set', async () => {
-  clearEnvKeys()
-
-  const { env } = await importEnv()
+test('computeEnv.ENV_NAME falls back to an empty string when NEXT_PUBLIC_ENV_NAME is not set', () => {
+  const env = computeEnv({})
 
   assert.equal(env.ENV_NAME, '')
 })
 
-test('env.ENV_NAME reads its value from NEXT_PUBLIC_ENV_NAME', async () => {
-  clearEnvKeys()
-  process.env.NEXT_PUBLIC_ENV_NAME = 'stage'
-
-  const { env } = await importEnv()
+test('computeEnv.ENV_NAME reads its value from NEXT_PUBLIC_ENV_NAME', () => {
+  const env = computeEnv({ NEXT_PUBLIC_ENV_NAME: 'stage' })
 
   assert.equal(env.ENV_NAME, 'stage')
 })
 
-test('env.ENV_NAME ignores the legacy ENV_NAME variable', async () => {
-  clearEnvKeys()
-  process.env.ENV_NAME = 'prod'
-
-  const { env } = await importEnv()
+test('computeEnv.ENV_NAME ignores the legacy ENV_NAME variable', () => {
+  const env = computeEnv({ ENV_NAME: 'prod' })
 
   assert.equal(env.ENV_NAME, '')
 })
 
-test('env.ANALYZE falls back to "false" when ANALYZE is not set', async () => {
-  clearEnvKeys()
-
-  const { env } = await importEnv()
+test('computeEnv.ANALYZE falls back to "false" when ANALYZE is not set', () => {
+  const env = computeEnv({})
 
   assert.equal(env.ANALYZE, 'false')
 })
 
-test('env.ANALYZE reads its value from ANALYZE', async () => {
-  clearEnvKeys()
-  process.env.ANALYZE = 'true'
-
-  const { env } = await importEnv()
+test('computeEnv.ANALYZE reads its value from ANALYZE', () => {
+  const env = computeEnv({ ANALYZE: 'true' })
 
   assert.equal(env.ANALYZE, 'true')
 })
 
-test('env.ANALYZE ignores the legacy NEXT_PUBLIC_ANALYZE variable', async () => {
-  clearEnvKeys()
-  process.env.NEXT_PUBLIC_ANALYZE = 'true'
-
-  const { env } = await importEnv()
+test('computeEnv.ANALYZE ignores the legacy NEXT_PUBLIC_ANALYZE variable', () => {
+  const env = computeEnv({ NEXT_PUBLIC_ANALYZE: 'true' })
 
   assert.equal(env.ANALYZE, 'false')
 })
 
-test('env exposes the expected shape when every variable is set at once', async () => {
-  clearEnvKeys()
-  process.env.NEXT_PUBLIC_MOCK = 'true'
-  process.env.NEXT_PUBLIC_ENV_NAME = 'local'
-  process.env.ANALYZE = 'true'
+test('computeEnv.VERSION reads its value from the lowercase version variable', () => {
+  const env = computeEnv({ version: '1.2.3' })
 
-  const { env } = await importEnv()
+  assert.equal(env.VERSION, '1.2.3')
+})
+
+test('computeEnv exposes the expected shape when every variable is set at once', () => {
+  const env = computeEnv({
+    version: '1.2.3',
+    NEXT_PUBLIC_MOCK: 'true',
+    NEXT_PUBLIC_ENV_NAME: 'local',
+    ANALYZE: 'true'
+  })
 
   assert.deepEqual(env, {
-    VERSION: '',
+    VERSION: '1.2.3',
     MOCK: 'true',
     ENV_NAME: 'local',
     ANALYZE: 'true'
   })
 })
 
-test('env exposes only the default values when no relevant variables are set', async () => {
-  clearEnvKeys()
-
-  const { env } = await importEnv()
+test('computeEnv exposes only the default values when no relevant variables are set', () => {
+  const env = computeEnv({})
 
   assert.deepEqual(env, {
     VERSION: '',
     MOCK: 'false',
     ENV_NAME: '',
     ANALYZE: 'false'
+  })
+})
+
+test('deriveModeFlags("local") flags local mode only', () => {
+  assert.deepEqual(deriveModeFlags('local'), {
+    isLocal: true,
+    isDev: false,
+    isStage: false,
+    isDevMode: true,
+    isProdMode: false
+  })
+})
+
+test('deriveModeFlags("dev") flags dev mode only', () => {
+  assert.deepEqual(deriveModeFlags('dev'), {
+    isLocal: false,
+    isDev: true,
+    isStage: false,
+    isDevMode: true,
+    isProdMode: false
+  })
+})
+
+test('deriveModeFlags("stage") flags stage mode and prod-mode semantics', () => {
+  assert.deepEqual(deriveModeFlags('stage'), {
+    isLocal: false,
+    isDev: false,
+    isStage: true,
+    isDevMode: false,
+    isProdMode: true
+  })
+})
+
+test('deriveModeFlags("prod") flags prod-mode semantics', () => {
+  assert.deepEqual(deriveModeFlags('prod'), {
+    isLocal: false,
+    isDev: false,
+    isStage: false,
+    isDevMode: false,
+    isProdMode: true
+  })
+})
+
+test('deriveModeFlags("") defaults to dev mode with no named env matched', () => {
+  assert.deepEqual(deriveModeFlags(''), {
+    isLocal: false,
+    isDev: false,
+    isStage: false,
+    isDevMode: true,
+    isProdMode: false
   })
 })

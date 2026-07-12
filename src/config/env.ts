@@ -1,16 +1,32 @@
-export const env = {
-  VERSION: process.env.version || '',
-  MOCK: process.env.NEXT_PUBLIC_MOCK || 'false',
-  ENV_NAME: process.env.NEXT_PUBLIC_ENV_NAME || '',
-  ANALYZE: process.env.ANALYZE || 'false'
+type ProcessEnvLike = Record<string, string | undefined>
+
+export const computeEnv = (processEnv: ProcessEnvLike) => ({
+  VERSION: processEnv.version || '',
+  MOCK: processEnv.NEXT_PUBLIC_MOCK || 'false',
+  ENV_NAME: processEnv.NEXT_PUBLIC_ENV_NAME || '',
+  ANALYZE: processEnv.ANALYZE || 'false'
+})
+
+export const deriveModeFlags = (envName: string) => {
+  const isLocal = envName === 'local'
+  const isDev = envName === 'dev'
+  const isStage = envName === 'stage'
+  const isDevMode = !(envName === 'stage' || envName === 'prod')
+  const isProdMode = !isDevMode
+
+  return { isLocal, isDev, isStage, isDevMode, isProdMode }
 }
 
-export const isLocal = env.ENV_NAME === 'local'
+export const env = computeEnv(process.env)
 
-export const isDev = env.ENV_NAME === 'dev'
+const modeFlags = deriveModeFlags(env.ENV_NAME)
 
-export const isStage = env.ENV_NAME === 'stage'
+export const isLocal = modeFlags.isLocal
 
-export const isDevMode = !(env.ENV_NAME === 'stage' || env.ENV_NAME === 'prod')
+export const isDev = modeFlags.isDev
 
-export const isProdMode = !isDevMode
+export const isStage = modeFlags.isStage
+
+export const isDevMode = modeFlags.isDevMode
+
+export const isProdMode = modeFlags.isProdMode
