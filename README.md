@@ -15,6 +15,9 @@ Welcome to my all-in-one Next.js project with app router!
 - 🦊 Husky for Git Hooks
 - 🚓 Lint git commit with Commitlint
 - 🧪 E2E Testing with [Playwright](https://playwright.dev/)
+- 🧬 Unit Testing with Node's built-in test runner, enforcing 100% coverage
+- 🚦 Lighthouse CI for Core Web Vitals budgets
+- 🔒 Security headers (HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
 - 💡 Absolute Imports using `@` prefix
 - 🗂 VSCode configuration: Debug, Settings, Tasks and extension for PostCSS, ESLint, Prettier, TypeScript
 - 🤖 SEO metadata with Next generateMetadata
@@ -29,7 +32,7 @@ npx create-next-app -e https://github.com/chongruei/nextjs-app-boilerplate
 ```
 
 ## Requirements
- - Node.js >=20.9.0 and pnpm
+ - Node.js >=24.0.0 and pnpm >=9.10.0
 
 ## Getting started
 
@@ -78,6 +81,23 @@ and
 
 ```bash
 pnpm test
+```
+
+## Run Unit Tests
+
+To run the unit test suite with Node's built-in test runner and enforce 100% coverage:
+
+```bash
+pnpm test:unit
+```
+
+## Run Lighthouse CI
+
+To audit Core Web Vitals against the project's performance budgets (see `lighthouserc.js`):
+
+```bash
+pnpm build
+pnpm test:lighthouse
 ```
 
 ## Bundle Analyzer
