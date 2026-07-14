@@ -15,13 +15,14 @@ export default function NavigationLink({ href, ...rest }: ComponentProps<typeof 
 
   return (
     <TransitionLink
+      {...rest}
       aria-current={isActive ? 'page' : undefined}
       href={href === '/' ? `/${locale}` : `/${locale}${href}`}
+      prefetch={false}
       className={clsx(
         'inline-block px-2 py-3 transition-colors',
         isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'
       )}
-      {...rest}
     />
   )
 }
