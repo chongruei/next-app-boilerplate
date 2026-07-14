@@ -1,6 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
-import { ViewTransitions } from 'next-view-transitions'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 
@@ -43,17 +42,15 @@ export default async function LocaleLayout(props: Props) {
   const { children } = props
 
   return (
-    <ViewTransitions>
-      <html className="h-full" lang={locale}>
-        <body className={clsx(inter.className, 'flex h-full flex-col')}>
-          <NextIntlClientProvider>
-            <QueryProvider>
-              <Navigation />
-              {children}
-            </QueryProvider>
-          </NextIntlClientProvider>
-        </body>
-      </html>
-    </ViewTransitions>
+    <html className="h-full" lang={locale}>
+      <body className={clsx(inter.className, 'flex h-full flex-col')}>
+        <NextIntlClientProvider>
+          <QueryProvider>
+            <Navigation />
+            {children}
+          </QueryProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   )
 }
