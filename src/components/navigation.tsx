@@ -13,7 +13,13 @@ export default function Navigation() {
           <NavigationLink href="/">{t('home')}</NavigationLink>
           <NavigationLink href="/about">{t('about')}</NavigationLink>
           <NavigationLink href="/config">{t('config')}</NavigationLink>
-          <NavigationLink href="/query">{t('query')}</NavigationLink>
+          {/* /query is the one link with real async data (a live API fetch,
+              cached via ISR) — prefetching it means that content is usually
+              already loaded by the time it's clicked, unlike the other pages
+              which are trivial to fetch fresh anyway. */}
+          <NavigationLink prefetch href="/query">
+            {t('query')}
+          </NavigationLink>
         </div>
         <LocaleSwitcher />
       </nav>
