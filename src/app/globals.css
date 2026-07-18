@@ -25,3 +25,40 @@
     max-width: 80rem;
   }
 }
+
+@layer base {
+  /* Reserve the scrollbar gutter so pages that scroll (e.g. /query) don't
+     shift horizontally against pages that don't. */
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  /* Standardized scrollbar styling — baseline across modern engines
+     (Chrome 121+, Safari 18.2+, Firefox). Respects OS overlay behaviour. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, white 22%, transparent) transparent;
+  }
+
+  /* WebKit/Blink refinement: a thin, rounded, theme-aware thumb that picks up
+     the primary accent on hover. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    background-color: color-mix(in oklab, white 22%, transparent);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, var(--color-primary) 65%, transparent);
+  }
+}
